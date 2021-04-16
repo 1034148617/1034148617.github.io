@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hiili.xyz","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Android学习笔记 一、布局管理器(ViewGroup继承来) 1、相对布局RelativeLayout     RelativeLayout上设置属性         android:gravity&#x3D;&quot;center&#x2F;...&quot;         android:ignoreGravity&#x3D;&quot;id&quot;     子组件设置属性         android:l">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android中UI控件整理">
+<meta property="og:url" content="http://hiili.xyz/2019/12/04/19120401/index.html">
+<meta property="og:site_name" content="hl blog">
+<meta property="og:description" content="Android学习笔记 一、布局管理器(ViewGroup继承来) 1、相对布局RelativeLayout     RelativeLayout上设置属性         android:gravity&#x3D;&quot;center&#x2F;...&quot;         android:ignoreGravity&#x3D;&quot;id&quot;     子组件设置属性         android:l">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-12-04T12:31:49.000Z">
+<meta property="article:modified_time" content="2021-04-16T01:05:18.651Z">
+<meta property="article:author" content="Hong Liu">
+<meta property="article:tag" content="android">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://hiili.xyz/2019/12/04/19120401/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>android中UI控件整理 | hl blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">hl blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">个人博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://hiili.xyz/2019/12/04/19120401/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Hong Liu">
+      <meta itemprop="description" content="学习笔记">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hl blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          android中UI控件整理
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-04 20:31:49" itemprop="dateCreated datePublished" datetime="2019-12-04T20:31:49+08:00">2019-12-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-16 09:05:18" itemprop="dateModified" datetime="2021-04-16T09:05:18+08:00">2021-04-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/android%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">android学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Android学习笔记</p>
+<p>一、布局管理器(ViewGroup继承来)</p>
+<pre><code>1、相对布局RelativeLayout
+    RelativeLayout上设置属性
+        android:gravity=&quot;center/...&quot;
+        android:ignoreGravity=&quot;id&quot;
+    子组件设置属性
+        android:layout_above            android:layout_alignParentBottom
+        android:layout_below            android:layout_alignParentLeft
+        android:layout_toLeftOf            android:layout_alignParentTop
+        android:layout_toRightOf        android:layout_alignParentRight
+
+2、线性布局LinearLayout    
+    LinearLayout上设置属性
+        android:orientation=&quot;vertical/horizontal&quot;
+        android:gravity=&quot;center/...&quot; 多个属性通过|分隔，如right|bottom居右下角
+    子组件设置属性
+        android:layout_width=&quot;1/...&quot; 组件分配剩下的空间
+
+3、帧布局FrameLayout
+    FrameLayout上设置属性
+        android:foreground=&quot;...&quot; 设置顶层图像
+        android:foregroundGravity=&quot;...&quot; 设置顶层图像位置
+
+4、表格布局TableLayout
+    通过&lt;TableRow&gt;&lt;/TableRow&gt;添加表格行
+
+5、网格布局GridLayout
+    GridLayout设置属性
+        android:columnCount=&quot;5/...&quot;    设置最大列数
+        android:rowCount=&quot;5/...&quot;    设置最大行数
+        android:orientation=&quot;vertical/...&quot;    设置默认排列模式
+    子组件的分布
+        android:layout_column=&quot;2/...&quot;    设置子组件位于网格的第几列
+        android:layout_columnSpan=&quot;2/...&quot; 设置子组件跨几列
+        android:layout_columnWeight        设置子组件分配剩余空间的权重
+        android:layout_gravity            设置子组件怎么排列的
+        android:layout_row=&quot;2/...&quot;    设置子组件位于网格的第几行
+        android:layout_rowSpan=&quot;2/...&quot; 设置子组件跨几行    
+</code></pre>
+<p>二、UI组件</p>
+<pre><code>1、文本框组件TextView
+    android:layout_width
+    android:layout_height
+    android:text     设置文本框的文字内容
+    android:textSize=&quot;27sp/...&quot; 设置文字大小
+    android:textColor=&quot;#FF0000/...&quot; 设置文字颜色        #+8位十六进制是ARGB，前两位代表透明度
+    android:singleLine=&quot;true/...&quot;    设置成单行文本框
+    android:background
+
+2、编辑框组件EditView
+    android:hint=&quot;提示信息&quot;    设置提示信息，输入框有输入则消失
+    android:inputType=&quot;textPassword/number/...&quot; 设置输入类型
+    android:drawableLeft=&quot;图片资源&quot;    在输入框左边绘制图像 同android:drawableStart
+    android:drawablePadding 设置绘制的图像的内边距
+    android:lines=&quot;5/...&quot;    设置编辑框占的行数
+    EditView.getText()可获得输入信息
+
+3、按钮组件Button
+    Button是TextView子类，可以使用其属性
+    设置按钮单击事件监听器
+        1、使用匿名类
+        Button btn = (Button) findViewById(id);
+        btn.setOnClickListener(new View.OnClickListener&#123;
+            @Override
+            public void onClick(View v)&#123;...&#125;
+        &#125;);
+        2、使用onClick属性
+            在Activity编写一个包含View类型参数的方法
+            在android:onClick属性指定上面定义的方法名
+
+4、图片按钮ImageButton
+    android:src=&quot;图片资源&quot; 设置图片,ImageButton没有android:text属性
+    android:background=&quot;#0000/...&quot;    设置背景颜色，#0000表示完全透明
+
+5、单选按钮RadioButton
+    使用RadioGroup包裹RadioButton成为单选按钮组，可以实现单选的效果
+    android:checked=&quot;true&quot; 设置为默认选择
+
+6、复选框CheackBox
+
+7、日期选择器DatePicker
+
+8、时间选择器TimePicker
+
+9、计时器Chronometer
+    android:format=&quot;已用时间：%s/...&quot; 设置显示格式
+    设置计时器功能
+        setBase()    设置计时器起始时间
+        setFormat()    设置时间格式
+        start()        开始计时
+        stop()        停止计时
+        setOnChronometerTickListener()    为计时器绑定监听事件
+</code></pre>
+<p>三、UI高级组件</p>
+<pre><code>1、进度条ProgressBar
+    style=&quot;?android:attr/progressBarStyleHorizontal...&quot; 设置进度条样式
+    android:max=&quot;100/...&quot;    设置进度最大值
+    android:progress=&quot;50/...&quot;    设置当前进度
+
+2、拖动条SeekBar
+    SeekBar是ProgressBar的子类，可以使用其属性
+    android:thumb=&quot;图片资源&quot; 可以将拖动条的按钮设置为对应图片
+    SeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()&#123;...&#125;)设置拖动事件
+
+3、星级评分条RatingBar
+    android:numStars=&quot;10/...&quot; 设置星星数量
+    android:rating=&quot;5/...&quot; 设置默认选择的星星数量
+    android:stepSize=&quot;1/0.5&quot; 设置一次选择的数量
+    android:isIndicator=&quot;true/...&quot; 设置是否不可改变
+    RatingBar.getRating()获取用户选择的星数
+
+4、图像视图ImageView
+    android:src=&quot;图片资源&quot; 设置显示的图片
+    android:scaleType=&quot;fixXY/...&quot; 设置XY独立缩放占满整个View
+    android:adjustViewBounds=&quot;true/...&quot; 设置是否根据边界自动缩放图片
+    android:maxWidth/maxHeight=&quot;90dp/...&quot;    只有设置了adjustViewBounds属性最大宽/长才有效果
+    android:tint=&quot;#aaFF0000/...&quot; 设置图像覆盖层
+
+5、图像切换器ImageSwitcher
+    ImageSwitcher is = (ImageSwitcher)findViewById(id);
+    is.setOutAnimation(AnimationUtils.loadAnimation(MainActivity.this,android.R.anim.fade_out)); 设置淡出效果/可以根据文件设置效果
+    is.setInAnimation(AnimationUtils.loadAnimation(MainActivity.this,android.R.anim.fade_int)); 设置淡入效果/可以根据文件设置效果
+    is.setFactory(new ViewSwitcher.ViewFactory()&#123;        设置视图工厂，可以设置监听器进行图像切换
+        @Override
+        public View makeView()&#123;    
+            ...
+            return ImageView;
+    &#125;&#125;);
+
+6、网格视图GridView
+    android:numColumns=&quot;3/auto_fit/...&quot; 设置列数
+    android:gravity 元素位置
+    android:verticalSpacing=&quot;5dp&quot; 垂直间距
+    显示图片需要适配器Adapter（包括ArrayAdapter、SimpleAdapter、SimpleCursorAdapter、BaseAdapter）实现
+        1、SimpleAdapter
+            布局文件cell.xml
+                &lt;LinearLayout&gt;
+                    &lt;ImageView&gt;&lt;/ImageView&gt;
+                &lt;/LinearLayout&gt;
+            java代码
+                private int[] pictures = new int[]&#123;...&#125;;    传入图像id
+                GridView gv = (GridView)FindViewById(id);
+                List&lt;Map&lt;String,Object&gt;&gt; listitem = new ArrayList&lt;Map&lt;String,Object&gt;&gt;();
+                for(int i=0;i&lt;pictures.length;i++)&#123;
+                    Map&lt;String,Object&gt; map = new HashMap&lt;String,Object&gt;();
+                    map.put(&quot;image&quot;,pictures[i]);
+                    listitem.add(map);
+                &#125;
+                SimpleAdapter sa= new Simpleadpter(this,listitem,R.layout.cell,new String[]&#123;&quot;image&quot;&#125;,new int[]&#123;R.id.image&#125;);
+                gv.setAdapter(sa);
+
+        2、BaseAdapter
+            private int[] pictures = new int[]&#123;...&#125;;
+            public class ImageAdapter extends BaseAdapter&#123;        自定义适配器
+                private Context context;                         上下文对象
+                public ImageAdapter(Context c)&#123;    context = c;&#125;
+                @Override
+                public int getCount()&#123;return pictures.length;&#125;
+                @Override
+                public Object getItem(int position)&#123;return null;&#125;
+                @Override
+                public long getItemId(int position)&#123;return 0;&#125;
+                @Override
+                public View getView(int position,View convertView,ViewGroup parent)&#123;
+                    IamgeView iv;
+                    if(convertView == null)&#123;iv = new ImageView(context);&#125;
+                    else&#123;iv = (ImageView)convertView;&#125;
+                    return iv;
+                &#125;&#125;
+
+7、下拉列表框Spinner
+    设置下拉选项
+    1、android:entries=&quot;@array/n1&quot; 设置下拉选项，要在数组资源中定义并引用
+        创建array.xml资源文件        
+        &lt;resources&gt;
+            &lt;string-array name=&quot;n1&quot;&gt;
+                &lt;item&gt;1&lt;/item&gt;    第一个item是直接显示的选项
+                &lt;item&gt;2&lt;/item&gt;
+                &lt;item&gt;3&lt;/item&gt;
+            &lt;/string-array&gt;
+        &lt;/resources&gt;            
+
+    2、通过适配器实现
+        String[] ctype = new String[]&#123;&quot;1&quot;,&quot;2&quot;,&quot;3&quot;&#125;;
+        ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter&lt;String&gt;(this,android.R.layout.simple_spinner_item,ctype);
+        adapter.setDropDownViewResourse(android.R.layout.simple_spinner_dropdown_item);
+        Spinner sp = findViewById(id);
+        sp.setAdapter(adapter);
+        String item = sp.getSelectedItem();  获得选择的列表项
+
+8、列表视图ListView
+    设置列表项
+    1、同下拉框选项，设置数组资源文件并引用
+        android:entries=&quot;@array/ctype&quot;
+
+    2、通过适配器设置列表项
+        ListView lv = findViewById(id);
+        lv.setAdapter(adapter);
+        lv.setOnClickListener()设置点击列表项事件监听
+        
+9、滚动视图ScrollView
+    垂直滚动视图&lt;ScrollView&gt;&lt;/ScrollView&gt;
+    水平滚动视图&lt;HorizontalScrollView&gt;&lt;/HorizontalScrollView&gt;
+    在滚动视图中只能有一个组件，想要放置多个组件需要用布局管理器将它们裹起来
+
+10、选项卡
+    使用选项卡有四个步骤
+        1、在布局文件中添加TabHost、TabWidget、TabContent组件    
+            TabHost和TabWidget有标记，TabContent通常使用FrameLayout
+        2、编写各标签页的xml文件
+        3、获取并初始化TabHost组件
+        4、为TabHost对象添加标签页
+
+    activity_main.xml中：
+        &lt;TabHost android:id=&quot;@android:id/tabhost&quot;&gt;
+            &lt;LinearLayout&gt;
+                &lt;TabWidget android:id=&quot;@android:id/tabs&quot;&gt;&lt;/TabWidget&gt;
+                &lt;FrameLayout android:id=&quot;@android:id/tabcontnet&quot;&gt;&lt;/FrameLayout&gt;
+            &lt;/LinearLayout&gt;
+        &lt;/TabHost&gt;
+    tab1.xml和tab2.xml是两个页面的资源文件
+    MainActivity.java中
+        TabHost th = findViewById(id);
+        th.setup()      初始化TabHost组件
+        LayoutInflater inflater = LayoutInflater.from(this);    
+        inflater.inflate(R.layout.tab1,th.getTabContentView());        加载xml布局文件，参数一是资源文件id，第二个是需要附加资源文件的根控件
+        inflater.inflate(R.layout.tab2,th.getTabContentView());
+        th.addTab(th,newTabSpec(&quot;tab1&quot;).setIndicator(&quot;选项卡1&quot;).setContent(R.id.left));
+        th.addTab(th,newTabSpec(&quot;tab2&quot;).setIndicator(&quot;选项卡2&quot;).setContent(R.id.right));
+</code></pre>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/android/" rel="tag"># android</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/12/01/19120101/" rel="prev" title="javascript中构造函数继承关系的整理">
+      <i class="fa fa-chevron-left"></i> javascript中构造函数继承关系的整理
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/19/21031902/" rel="next" title="数据库ddl和dml语言概要">
+      数据库ddl和dml语言概要 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hong Liu"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Hong Liu</p>
+  <div class="site-description" itemprop="description">学习笔记</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hong Liu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '164af19252757abf3d36',
+      clientSecret: '40b91a6c686df0ffad24818ebd801dfe2db44d0d',
+      repo        : '1034148617.github.io',
+      owner       : '1034148617',
+      admin       : [''],
+      id          : '10748e02896ec1cbd840ac79b56028c4',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+    </div>
+</body>
+</html>
