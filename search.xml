@@ -74,7 +74,9 @@
   <entry>
     <title>MarkDown常用语法</title>
     <url>/%E5%85%B6%E4%BB%96/MarkDown%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<h3 id="MakeDown-（Typora）"><a href="#MakeDown-（Typora）" class="headerlink" title="MakeDown （Typora）"></a>MakeDown （Typora）</h3><h4 id="一、常用快捷键"><a href="#一、常用快捷键" class="headerlink" title="一、常用快捷键"></a>一、常用快捷键</h4><table>
+    <content><![CDATA[<h3 id="MakeDown-（Typora）"><a href="#MakeDown-（Typora）" class="headerlink" title="MakeDown （Typora）"></a>MakeDown （Typora）</h3><h4 id="一、常用快捷键"><a href="#一、常用快捷键" class="headerlink" title="一、常用快捷键"></a>一、常用快捷键</h4><span id="more"></span>
+
+<table>
 <thead>
 <tr>
 <th>序号</th>
@@ -102,9 +104,27 @@
 <td>Ctrl + H</td>
 <td>替换</td>
 </tr>
+<tr>
+<td>5</td>
+<td>Ctrl + Shift + K</td>
+<td>代码块</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Ctrl + Shift + L</td>
+<td>文件大纲侧边栏</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Ctrl + &#x2F;</td>
+<td>源代码模式切换</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
 </tbody></table>
-<span id="more"></span>
-<p>| 5    | Ctrl + Shift + K | 代码块         |<br>| 6    | Ctrl + Shift + L | 文件大纲侧边栏 |<br>| 7    | Ctrl + &#x2F;         | 源代码模式切换 |<br>|      |                  |                |</p>
 <h4 id="二、常用语法"><a href="#二、常用语法" class="headerlink" title="二、常用语法"></a>二、常用语法</h4><ul>
 <li><p>斜体：*文本*  或者 _文本_，效果如下</p>
 <p>​                    <em>文本</em>         <em>文本</em></p>
@@ -229,7 +249,9 @@
     <title>vs code常用快捷键</title>
     <url>/%E5%85%B6%E4%BB%96/vs-code%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
     <content><![CDATA[<h3 id="一、快捷键总览"><a href="#一、快捷键总览" class="headerlink" title="一、快捷键总览"></a>一、快捷键总览</h3><p>​            <a href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf">https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf</a></p>
-<h3 id="二、常用快捷键"><a href="#二、常用快捷键" class="headerlink" title="二、常用快捷键"></a>二、常用快捷键</h3><table>
+<h3 id="二、常用快捷键"><a href="#二、常用快捷键" class="headerlink" title="二、常用快捷键"></a>二、常用快捷键</h3><span id="more"></span>
+
+<table>
 <thead>
 <tr>
 <th>序号</th>
@@ -246,11 +268,6 @@
 <td>2</td>
 <td>Ctrl + C</td>
 <td>复制当前行</td>
-</tr>
-<tr>
-<td><span id="more"></span></td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td>3</td>
